@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 const { Model } = require('../models');
 const request = require('request');
 const { http } = require('winston');
-const axios = require('axios');
+const { fetchAuthorization, fetchData, TST } = require('../services/fetchExternalData.service');
 
 
 module.exports.testController = async (req, res, next) => {
@@ -135,11 +135,73 @@ module.exports.testController = async (req, res, next) => {
     }
 }
 
-module.exports.getDataFromExternalServerAsync = async () => {
+module.exports.getDataFromExternalServerAsync = async (req, res, next) => {
     try {
 
+        const {
+            cookie,
+            CSRFToken,
+        } = await fetchAuthorization();
+
+        const {
+            maTinh,
+            maHuyen,
+            maXa,
+            maThon,
+            maHo,
+            tenHo,
+            maDinhDanh,
+            hoTen,
+            soCmnd,
+            ngaySinh,
+            checkHoTen,
+            maSo,
+            maThe,
+            page,
+            size,
+            propertyName,
+            direction,
+        } = req.query;
+
+        const searchObj = {
+            "maTinh": maTinh ? maTinh : "82",
+            "maHuyen": maHuyen ? maHuyen : "",
+            "maXa": maXa ? maXa : "",
+            "maThon": maThon ? maThon : "",
+            "maHo": maHo ? maHo : "",
+            "tenHo": tenHo ? tenHo : "",
+            "maDinhDanh": maDinhDanh ? maDinhDanh : "",
+            "hoTen": hoTen ? hoTen : "nguyễn văn lợi",
+            "soCmnd": soCmnd ? soCmnd : "",
+            "ngaySinh": ngaySinh ? ngaySinh : null,
+            "checkHoTen": checkHoTen ? checkHoTen : false,
+            "maSo": maSo ? maSo : "",
+            "maThe": maThe ? maThe : "",
+            "page": page ? page : 0,
+            "size": size ? size : 100,
+            "propertyName": propertyName ? propertyName : "maDinhDanh",
+            "direction": direction ? direction : "ASC"
+        }
+
+        // const mytst = new TST();
+        // await TST.init();
+        const {
+            data,
+            statusCode,
+        } = await fetchData({
+            cookie: cookie,
+            CSRFToken: CSRFToken,
+        }, searchObj);
+        return res.status(httpStatus.OK)
+            .json({
+                code: httpStatus.OK,
+                message: 'Fetch data successfully',
+                result: data,
+            })
+            .end();
 
     } catch (error) {
+        // console.log(error);
         next(error);
     }
 }

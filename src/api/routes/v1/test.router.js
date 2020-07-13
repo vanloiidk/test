@@ -2,6 +2,7 @@ const Router = require('express').Router();
 
 const {
     testController,
+    getDataFromExternalServerAsync,
 } = require('../../controllers/test.controller');
 
 /**
@@ -34,6 +35,20 @@ const {
  */
 Router.route('/').get(
     testController
+)
+
+/**
+ * @api {get} /v1/api/test/fetch Fetch data from external api with async
+ * @apiVersion 1.0.0
+ * @apiSampleRequest http://localhost:5000/v1/api/test/fetch
+ * 
+ * @apiName FetchDataFromExternalAPI
+ * @apiGroup Test
+ * 
+ * 
+ */
+Router.route('/fetch').get(
+    getDataFromExternalServerAsync,
 )
 
 

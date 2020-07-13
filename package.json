@@ -38,6 +38,7 @@
     "mongodb": "^3.5.9",
     "morgan": "^1.10.0",
     "open-cli": "^6.0.1",
+    "qs": "^6.9.4",
     "request": "^2.88.2",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0"
