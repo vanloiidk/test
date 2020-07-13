@@ -1,0 +1,9 @@
+{
+    "name": "Test APIs",
+    "version": "1.0.0",
+    "description": "APIs documentation",
+    "title": "APIs documentation",
+    "template": {
+        "forceLanguage": "en"
+    }
+}

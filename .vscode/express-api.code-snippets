@@ -1,0 +1,167 @@
+{
+    "APIs documentation with apidoc npm format": {
+        "scope": "javascript,typescript",
+        "prefix": "generate-api-doc",
+        "body": [
+            "/**",
+            "* @api {method} /example Description about the API",
+            "* @apiVersion 1.0.0",
+            "* @apiSampleRequest protocol://domain/endpoint",
+            "*",
+            "* @apiName GetUser",
+            "* @apiDescription Description",
+            "* @apiGroup Auth",
+            "* @apiPermission Public",
+            "*",
+            "* @apiHeader {String} access-key Users unique access-key.",
+            "*",
+            "* @apiHeaderExample {json} Header-Example:",
+            "*     {",
+            "*       'Accept-Encoding': 'Accept-Encoding': gzip, deflate",
+            "*     }",
+            "*",
+            "* @apiParam {Type} name User name",
+            "*",
+            "* @apiParamExample {json} Request-Example:",
+            "*     {",
+            "*       'id': '4711'",
+            "*     }",
+            "*",
+            "* @apiSuccess {Object[]} object Returned object",
+            "* @apiSuccess {Number} object.name Object name",
+            "* @apiSuccess {String} message Successful response message",
+            "* @apiSuccess {Number} code Successful response code",
+            "*",
+            "* @apiSuccessExample {json} Success-Response:",
+            "*     HTTP/1.1 200 OK",
+            "*     {",
+            "*       'name': 'sample name'",
+            "*     }",
+            "*",
+            "* @apiError UserNotFound The <code>id</code> of the User was not found",
+            "*",
+            "* @apiErrorExample {json} Error-Response:",
+            "*     HTTP/1.1 404 Not Found",
+            "*     {",
+            "*       'message': 'sample message'",
+            "*       'code': sampleCode",
+            "*     }",
+            "*",
+            "*/"
+        ],
+        "description": "APIs documentation with apidoc npm format"
+    },
+    "APIs controller function": {
+        "scope": "javascript,typescript",
+        "prefix": "generate-api-controller",
+        "body": [
+            "module.exports.$name = async (req, res, next) => {",
+            "    try {",
+            "",
+            "    } catch (error) {",
+            "        next(error);",
+            "    }",
+            "}",
+        ],
+        "description": "APIs controller format"
+    }
+
+	"APIs controller response": {
+        "scope": "javascript,typescript",
+        "prefix": "generate-api-response",
+        "body": [
+            "return res.status($statusCode)",
+			"	.json({",
+			"		code: $statusCode,",
+			"		message: '$responseMessage'",
+			"	})",
+			"	.end();"
+        ],
+        "description": "APIs controller response"
+    }
+
+	"APIs Error instance": {
+        "scope": "javascript,typescript",
+        "prefix": "generate-api-error-instance",
+        "body": [
+            "throw new APIError({",
+			"	message: '$message',",
+			"	status: $statusCode,",
+			"	stack: error.stack,",
+			"	isPublic: false,",
+			"	errors:	[",
+                    	"		{",
+                        "			field: '$field',"
+                        "			location: '$location',"
+                        "			message: '$errorMessage',"
+                    	"		}",
+                	"	]",
+            "})",
+        ],
+        "description": "APIs Error instance"
+    }
+
+
+
+
+
+
+
+
+
+
+	"Query announcement scope": {
+        "scope": "javascript,typescript",
+        "prefix": "generate-query-functions-announcement",
+        "body": [
+            "/**",
+			"*===================================================
+     			"*=                Query functions                  =
+     			"*=        Put all the query functions below        =
+     			"*===================================================
+			"*/"
+        ],
+        "description": "Generate Query functions scope comment/announcement"
+    }
+
+	"Creation announcement scope": {
+        "scope": "javascript,typescript",
+        "prefix": "generate-creation-functions-announcement",
+        "body": [
+            "/**",
+			"*==========================================================
+     			"*=                Creation functions                      =
+     			"*=        Put all the creation functions below            =
+     			"*==========================================================
+			"*/"
+        ],
+        "description": "Generate creation functions scope comment/announcement"
+    }
+
+	"Modification announcement scope": {
+        "scope": "javascript,typescript",
+        "prefix": "generate-modification-functions-announcement",
+        "body": [
+            "/**",
+			"*============================================================
+     			"*=                Modification functions                    =
+     			"*=        Put all the modification functions below          =
+     			"*============================================================
+			"*/"
+        ],
+        "description": "Generate modification functions scope comment/announcement"
+    }
+
+	"Deletion announcement scope": {
+        "scope": "javascript,typescript",
+        "prefix": "generate-deletion-functions-announcement",
+        "body": [
+            "/**",
+			"*=========================================================
+     			"*=                Deletion functions                     =
+     			"*=        Put all the deletion functions below       	  =
+     			"*=========================================================
+			"*/"
+        ],
+        "description": "Generate Deletion functions scope comment/announcement"
+    }
