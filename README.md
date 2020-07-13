@@ -1,10 +1,10 @@
 ## Usage
 ```
 # Step 1: clone the repo
-git clone https://gitlab.com/knowllipop/backend.git
+git clone https://github.com/vanloiidk/test.git
 
 # Step 2: install necessary modules
-cd backend
+cd test
 
 npm i
 
