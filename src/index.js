@@ -2,7 +2,7 @@ const {
     app,
 } = require('./config/express');
 
-const { connect: dbConnect } = require('./config/mongo');
+const { connect } = require('./config/mysql');
 
 const {
     port,
@@ -13,8 +13,8 @@ const logger = require('./config/logger');
 
 let appInstance;
 const startApp = async () => {
-    // const dbConnection = await dbConnect();
-    // app.locals.db = dbConnection;
+    const conn = await connect();
+    app.locals.sqlConn = conn;
 
     app.listen(port, () => {
         logger.info(`Server is listening on port: ${port} (${env})`);
